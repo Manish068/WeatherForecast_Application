@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Weather Application</string>
+    <string name="home">Home</string>
+    <string name="manage_location">Manage Location</string>
+    <string name="settings">Settings</string>
+    <string name="openDrawer">open</string>
+    <string name="closeDrawer">close</string>
+    <string name="loading">loading</string>
+    <string name="last_update_july_31_11_00_am">Last Update JULY 31 11:00 AM</string>
+    <string name="bengalore">Bengalore</string>
+    <string name="_10_24_am">10:24 AM</string>
+    <string name="_31_32_c">31/32 C</string>
+    <string name="feels_like_27_c">Feels Like 27 C</string>
+
+
+    <string-array name="navigation_titles_array">
+        <item>@string/home</item>
+        <item>@string/manage_location</item>
+        <item>@string/settings</item>
+    </string-array>
+</resources>
