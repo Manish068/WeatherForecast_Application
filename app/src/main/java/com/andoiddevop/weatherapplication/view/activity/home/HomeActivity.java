@@ -154,9 +154,17 @@ public class HomeActivity extends BaseActivity {
                         break;
                     default:
                         navigationIndex = 0;
-                        break;
+
                 }
 
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                } else {
+                    item.setChecked(true);
+                }
+                item.setChecked(true);
+
+                loadFragment();
                 return true;
             }
         });
@@ -187,7 +195,6 @@ public class HomeActivity extends BaseActivity {
         {
             getMenuInflater().inflate(R.menu.menu_items,menu);
         }
-
 
         return true;
     }

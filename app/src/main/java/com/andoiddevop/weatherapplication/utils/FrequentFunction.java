@@ -5,6 +5,9 @@ import android.location.Address;
 import android.location.Geocoder;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,5 +26,16 @@ public class FrequentFunction {
         }
         return addressList.get(0).getLocality();
 
+    }
+
+    public static String getWeekDays(long unixtimestamp){
+        long timeStamp=unixtimestamp * 1000L;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE");
+        Date date = new Date(timeStamp);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        String dayOfTheWeek = simpleDateFormat.format(date);
+        return dayOfTheWeek;
     }
 }

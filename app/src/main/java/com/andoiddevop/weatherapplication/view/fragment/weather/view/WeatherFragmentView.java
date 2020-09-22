@@ -1,4 +1,4 @@
-package com.andoiddevop.weatherapplication.view.fragment.weather.presenter.view;
+package com.andoiddevop.weatherapplication.view.fragment.weather.view;
 
 import com.andoiddevop.weatherapplication.model.WeatherBean;
 

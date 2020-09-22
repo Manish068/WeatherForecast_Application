@@ -10,7 +10,10 @@
     <string name="bengalore">Bengalore</string>
     <string name="_10_24_am">10:24 AM</string>
     <string name="_31_32_c">31/32 C</string>
+    <string name="google_places_key">AIzaSyDdLHDsBWJbhOCJEIphNSJwh9i7UuzCa_Q</string>
     <string name="feels_like_27_c">Feels Like 27 C</string>
+    <string name="delete">delete</string>
+    <string name="cancel">cancel</string>
 
 
     <string-array name="navigation_titles_array">

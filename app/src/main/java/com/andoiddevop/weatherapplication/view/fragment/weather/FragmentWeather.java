@@ -2,6 +2,7 @@ package com.andoiddevop.weatherapplication.view.fragment.weather;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,20 +14,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andoiddevop.weatherapplication.R;
+import com.andoiddevop.weatherapplication.model.DataItem;
 import com.andoiddevop.weatherapplication.model.WeatherBean;
 import com.andoiddevop.weatherapplication.utils.Constants;
 import com.andoiddevop.weatherapplication.view.fragment.BaseFragment;
+import com.andoiddevop.weatherapplication.view.fragment.weather.adapter.FiveDaysWeatherAdapter;
 import com.andoiddevop.weatherapplication.view.fragment.weather.presenter.WeatherFragmentPresenter;
-import com.andoiddevop.weatherapplication.view.fragment.weather.presenter.view.WeatherFragmentView;
+import com.andoiddevop.weatherapplication.view.fragment.weather.view.WeatherFragmentView;
 import com.bumptech.glide.Glide;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class FragmentWeather extends BaseFragment implements WeatherFragmentView {
 
@@ -68,6 +72,8 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
         weatherFragmentPresenter = new WeatherFragmentPresenter(this);
         weatherFragmentPresenter.getCurrentWeather(latitude, longitude, Constants.WEATHERBIT_API_KEY);
         Log.d("latitude_longitude", " " + latitude + " " + longitude);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewFiveDays.setLayoutManager(linearLayoutManager);
         return view;
     }
 
@@ -146,16 +152,25 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
             textViewUVIndex.setText("UV INDEX: " + String.valueOf(weatherBean.getData().get(0).getUv()));
             textViewPressure.setText("Pressure: " + String.valueOf(weatherBean.getData().get(0).getPres()));
             textViewPreciption.setText("Preciption: " + String.valueOf(weatherBean.getData().get(0).getPrecip()));
-
             textViewSunRise.setText("SUN RISE: " + SunRiseTime);
             textViewSunSet.setText("SUNSET: " + SunsetTime);
             textViewHumidity.setText("HUMIDITY: " + String.valueOf(weatherBean.getData().get(0).getRh()) + "%");
             textViewWind.setText("WIND: " + String.valueOf(weatherBean.getData().get(0).getWindSpd()));
             textViewCloudCover.setText("CLOUD COVER: " + weatherBean.getData().get(0).getClouds());
+
+            setFiveDaysAdapter(weatherBean.getData());
+
         } else {
             Toast.makeText(getActivity(), "no data", Toast.LENGTH_SHORT).show();
         }
 
+
+    }
+
+    private void setFiveDaysAdapter(List<DataItem> data) {
+
+        FiveDaysWeatherAdapter fiveDaysWeatherAdapter = new FiveDaysWeatherAdapter(data,getActivity());
+        recyclerViewFiveDays.setAdapter(fiveDaysWeatherAdapter);
 
     }
 }

@@ -21,9 +21,6 @@ public class FragmentHome extends BaseFragment {
     ViewPager viewPager;
     TabLayout tabLayout;
 
-    private ViewPagerAdapter mViewPagerAdapter;
-
-
 
     @Nullable
     @Override
@@ -40,7 +37,7 @@ public class FragmentHome extends BaseFragment {
     }
 
     private void setupViewPager(ViewPager ViewPager) {
-        mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+        ViewPagerAdapter mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         mViewPagerAdapter.addFragment(new FragmentWeather(), MyApp.cityName, String.valueOf(MyApp.latitude),String.valueOf(MyApp.longitude));
         ViewPager.setAdapter(mViewPagerAdapter);
     }

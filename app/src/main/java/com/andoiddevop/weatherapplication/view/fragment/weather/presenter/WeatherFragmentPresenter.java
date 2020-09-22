@@ -1,7 +1,7 @@
 package com.andoiddevop.weatherapplication.view.fragment.weather.presenter;
 
 import com.andoiddevop.weatherapplication.model.WeatherBean;
-import com.andoiddevop.weatherapplication.view.fragment.weather.presenter.view.WeatherFragmentView;
+import com.andoiddevop.weatherapplication.view.fragment.weather.view.WeatherFragmentView;
 import com.andoiddevop.weatherapplication.web.WebServices;
 import com.andoiddevop.weatherapplication.web.handler.WeatherHandler;
 

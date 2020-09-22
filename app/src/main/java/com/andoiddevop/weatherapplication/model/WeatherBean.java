@@ -5,7 +5,7 @@ import java.util.List;
 public class WeatherBean{
 	private String countryCode;
 	private String city_name;
-	private List<DataItem> data;
+	 List<DataItem> data;
 	private String timezone;
 	private double lon;
 	private String stateCode;
