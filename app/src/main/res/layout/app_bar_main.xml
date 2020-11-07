@@ -14,6 +14,7 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.popUpOverlay"
             app:layout_scrollFlags="scroll|enterAlways"
+            app:titleTextColor="@android:color/white"
             />
 
         <FrameLayout

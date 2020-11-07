@@ -7,7 +7,7 @@ public class DataItem{
 	private int moonriseTs;
 	private int clouds;
 	private double lowTemp;
-	private double windSpd;
+	private double wind_spd;
 	private double ozone;
 	private int pop;
 	private String validDate;
@@ -65,7 +65,7 @@ public class DataItem{
 	}
 
 	public double getWindSpd(){
-		return windSpd;
+		return wind_spd;
 	}
 
 	public double getOzone(){

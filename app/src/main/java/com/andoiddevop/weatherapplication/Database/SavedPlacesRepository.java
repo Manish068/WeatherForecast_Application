@@ -29,6 +29,7 @@ public class SavedPlacesRepository {
         }.execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void getTasks(FetchSavedLocations fetchSavedLocations){
         this.fetchSavedLocations = fetchSavedLocations;
 
@@ -45,8 +46,10 @@ public class SavedPlacesRepository {
                 fetchSavedLocations.savedPlaces(savedPlaces);
             }
         }.execute();
+
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void deleteTask(String key){
         new AsyncTask<Void,Void,Void>(){
             @Override

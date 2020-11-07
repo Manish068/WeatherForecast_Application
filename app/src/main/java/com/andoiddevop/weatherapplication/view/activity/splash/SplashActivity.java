@@ -58,6 +58,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
+
         Glide.with(this).load(R.drawable.weather).into(imageViewSplash);
         imageViewSplash.setAnimation(AnimationUtils.loadAnimation(this,R.anim.bounce_left));
         Glide.with(this).load(R.drawable.weather2).into(imageViewSplash2);
@@ -86,31 +87,26 @@ public class SplashActivity extends BaseActivity {
         //checking if status of GPS
         //if it is disabled i can show the dialog
         msettingClient = LocationServices.getSettingsClient(this);
-        msettingClient.checkLocationSettings(mlocationSettingsRequest).addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                Log.d("GPS","SUCCESS");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                int statusCode = ((ApiException)e).getStatusCode();
-                switch (statusCode){
-                    case LocationSettingsStatusCodes
-                            .RESOLUTION_REQUIRED:
-                        ResolvableApiException apiException = (ResolvableApiException) e;
-                        try {
-                            apiException.startResolutionForResult(SplashActivity.this,REQUEST_GPS);
-                        } catch (IntentSender.SendIntentException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        Log.d("GPS","Location Settings are unavailable");
-                        break;
-                }
-            }
-        }).addOnCanceledListener(new OnCanceledListener() {
+        msettingClient.checkLocationSettings(mlocationSettingsRequest).addOnSuccessListener(
+                locationSettingsResponse -> Log.d("GPS","SUCCESS"))
+
+                .addOnFailureListener(e -> {
+                    int statusCode = ((ApiException)e).getStatusCode();
+                    switch (statusCode){
+                        case LocationSettingsStatusCodes
+                                .RESOLUTION_REQUIRED:
+                            ResolvableApiException apiException = (ResolvableApiException) e;
+                            try {
+                                apiException.startResolutionForResult(SplashActivity.this,REQUEST_GPS);
+                            } catch (IntentSender.SendIntentException ex) {
+                                ex.printStackTrace();
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            Log.d("GPS","Location Settings are unavailable");
+                            break;
+                    }
+                }).addOnCanceledListener(new OnCanceledListener() {
             @Override
             public void onCanceled() {
                 Log.d("GPS","CANCELLED");
@@ -140,6 +136,7 @@ public class SplashActivity extends BaseActivity {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
+
     private void navigateToHomeScreen() {
         appLocationService = new AppLocationService(this);
         new Handler().postDelayed(new Runnable() {
@@ -151,7 +148,7 @@ public class SplashActivity extends BaseActivity {
 
     }
 
-
+    //Open Setting->Gps
     private void openGPSEnabledSettings(){
         //user can manually enable the gps
         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);

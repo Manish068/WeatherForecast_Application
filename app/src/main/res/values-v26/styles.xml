@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.popUpOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:iconTint">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+    </style>
+</resources>

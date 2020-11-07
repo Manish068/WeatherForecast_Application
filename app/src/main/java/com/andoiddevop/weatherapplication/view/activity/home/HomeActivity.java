@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.andoiddevop.weatherapplication.R;
@@ -42,7 +43,9 @@ public class HomeActivity extends BaseActivity {
     private String CURRENT_TAG = Constants.TAG_HOME;
 
     private Handler handler;
+    ActionBarDrawerToggle toggle;
 
+    boolean mToolBarNavigationListenerIsRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +59,16 @@ public class HomeActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         settingUpNavigationView();
-       if (savedInstanceState == null) {
+
+
+
+        if (savedInstanceState == null) {
             navigationIndex = 0;
             CURRENT_TAG = Constants.TAG_HOME;
             loadFragment();
         }
+
+
 
     }
 
@@ -70,14 +78,14 @@ public class HomeActivity extends BaseActivity {
      * name, website, notifications action view (dot)
      */
 
-    /***
+    /*
      * Returns respected fragment that user
      * selected from navigation menu
      */
 
 
     private void loadFragment() {
-// selecting appropriate nav menu item
+     // selecting appropriate nav menu item
         settingUpNavigationMenu();
 
         settingToolbarTitle();
@@ -136,41 +144,38 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void settingUpNavigationView() {
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        navigationIndex = 0;
-                        CURRENT_TAG = Constants.TAG_HOME;
-                        break;
-                    case R.id.nav_manage_location:
-                        navigationIndex = 1;
-                        CURRENT_TAG = Constants.TAG_MANAGE_LOCATION;
-                        break;
-                    case R.id.nav_Setting:
-                        navigationIndex = 2;
-                        CURRENT_TAG = Constants.TAG_SETTINGS;
-                        break;
-                    default:
-                        navigationIndex = 0;
+        navView.setNavigationItemSelectedListener(item ->
+        {
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    navigationIndex = 0;
+                    CURRENT_TAG = Constants.TAG_HOME;
+                    break;
+                case R.id.nav_manage_location:
+                    navigationIndex = 1;
+                    CURRENT_TAG = Constants.TAG_MANAGE_LOCATION;
+                    break;
+                case R.id.nav_Setting:
+                    navigationIndex = 2;
+                    CURRENT_TAG = Constants.TAG_SETTINGS;
+                    break;
+                default:
+                    navigationIndex = 0;
 
-                }
-
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
-                item.setChecked(true);
-
-                loadFragment();
-                return true;
             }
+
+            if (item.isChecked()) {
+                item.setChecked(false);
+            } else {
+                item.setChecked(true);
+            }
+            item.setChecked(true);
+
+            loadFragment();
+            return true;
         });
 
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+        toggle = new ActionBarDrawerToggle(this,
                 drawerLayout, toolbar,
                 R.string.openDrawer, R.string.closeDrawer) {
             @Override
@@ -188,6 +193,7 @@ public class HomeActivity extends BaseActivity {
         toggle.syncState();
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

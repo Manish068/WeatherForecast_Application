@@ -1,9 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorBackgroundSplash</item>
-        <item name="colorPrimaryDark">@color/colorBackgroundSplash</item>
+        <item name="colorPrimary">#010F25</item>
+        <item name="colorPrimaryDark">#010F25</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="drawerArrowStyle">@style/DrawerIcon</item>
         <item name="android:divider">@drawable/menu_item_padding</item>
@@ -11,7 +11,6 @@
     </style>
 
     <style name="AppTheme.popUpOverlay" parent="ThemeOverlay.AppCompat.Light">
-
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorPrimaryInverse">@android:color/white</item>
@@ -23,7 +22,7 @@
     </style>
 
     <style name="DrawerIcon" parent="Base.Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">#AE000000</item>
+        <item name="color">#FCFFFEFE</item>
     </style>
 
     <style name="TabLayoutStyle" parent="Widget.Design.TabLayout">

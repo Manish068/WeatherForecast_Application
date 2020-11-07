@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/_4sdp"
-    android:orientation="vertical"
-    android:background="@color/lightGrey"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <LinearLayout
-        android:layout_width="@dimen/_120sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
         android:padding="@dimen/_6sdp"
-        android:background="@color/headercolor"
         android:gravity="center">
 
         <TextView
@@ -25,14 +27,14 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_80sdp"
         android:padding="@dimen/_16sdp"
         android:id="@+id/imageViewWeather"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"
         android:id="@+id/textViewMaxMin"/>
     
@@ -42,8 +44,8 @@
         android:id="@+id/textViewWeather"
         android:gravity="center"
         android:layout_marginTop="@dimen/_5sdp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/white"/>
 
-
+    </LinearLayout>
 
 </LinearLayout>

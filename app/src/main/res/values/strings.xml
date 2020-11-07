@@ -14,6 +14,24 @@
     <string name="feels_like_27_c">Feels Like 27 C</string>
     <string name="delete">delete</string>
     <string name="cancel">cancel</string>
+    <string name="temperature">Temperature</string>
+    <string name="farahenite">F</string>
+    <string name="celcius">C</string>
+    <string name="time_format">Time Format</string>
+    <string name="twenty_four">24</string>
+    <string name="twelve">12</string>
+    <string name="mm">mm</string>
+    <string name="perception">Perception</string>
+    <string name="inches">in</string>
+    <string name="pressure">Pressure</string>
+    <string name="system">System</string>
+    <string name="date_format">Date Format</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="km_h">km/h</string>
+    <string name="api">API</string>
+    <string name="kmh">KM/H</string>
+    <string name="mh">mh</string>
+    <string name="millibar_type">milibar</string>
 
 
     <string-array name="navigation_titles_array">

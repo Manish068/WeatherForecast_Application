@@ -70,4 +70,7 @@ dependencies {
     //
     implementation 'com.google.android.libraries.places:places:2.4.0'
 
+    //
+    implementation 'com.llollox:androidtoggleswitch:2.0.1'
+
 }

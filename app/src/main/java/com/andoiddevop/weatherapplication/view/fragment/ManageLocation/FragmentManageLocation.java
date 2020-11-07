@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,6 +52,7 @@ public class FragmentManageLocation extends BaseFragment implements SavedPlacesR
     private List<SavedPlaces> savedPlacesList = new ArrayList<>();
     private SavedPlacesAdapter savedPlacesAdapter;
 
+    private Toolbar toolbar;
 
     @Nullable
     @Override
@@ -59,6 +61,7 @@ public class FragmentManageLocation extends BaseFragment implements SavedPlacesR
         textViewCityCount = view.findViewById(R.id.textViewCityCount);
         recyclerViewLocations = view.findViewById(R.id.recyclerViewLocations);
         fabButtonAddLocation = view.findViewById(R.id.fabButtonAddLocation);
+
 
         recyclerViewLocations.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -75,6 +78,8 @@ public class FragmentManageLocation extends BaseFragment implements SavedPlacesR
                 startActivityForResult(intent, Constants.AUTOCOMPLETE_REQUEST_CODE);
             }
         });
+
+
 
         return view;
     }

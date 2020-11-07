@@ -21,7 +21,6 @@ public class WeatherFragmentPresenter implements WeatherFragmentPresenterHandler
             public void onError(String message) {
                 weatherFragmentView.hideProgressBar();
                 weatherFragmentView.showFeedBackWeather(message);
-
             }
 
             @Override

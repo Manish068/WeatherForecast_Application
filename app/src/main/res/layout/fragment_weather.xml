@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgweather">
+    android:background="@drawable/nightbg">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
+
 
         <LinearLayout
             android:id="@+id/UpperLayout"
@@ -19,7 +24,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
             <RelativeLayout
@@ -91,23 +96,12 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textViewCityFeelsLike"
+                    android:id="@+id/textViewWeatherInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textViewWeather"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="@string/feels_like_27_c"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textViewWeatherInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textViewCityFeelsLike"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:textAlignment="textEnd"
                     android:layout_toEndOf="@+id/imageViewWeather"
                     android:text="Moderate Rain with thunderstorm"
@@ -238,7 +232,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_16sdp"
-            android:background="#D9D6CF"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
