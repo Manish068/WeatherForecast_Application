@@ -32,11 +32,13 @@
     <string name="kmh">KM/H</string>
     <string name="mh">mh</string>
     <string name="millibar_type">milibar</string>
+    <string name="MapView">Map view</string>
 
 
     <string-array name="navigation_titles_array">
         <item>@string/home</item>
         <item>@string/manage_location</item>
+        <item>@string/MapView</item>
         <item>@string/settings</item>
     </string-array>
 </resources>

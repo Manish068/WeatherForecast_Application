@@ -2,6 +2,7 @@ package com.andoiddevop.weatherapplication.view.activity.home;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,8 +19,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.andoiddevop.weatherapplication.R;
 import com.andoiddevop.weatherapplication.view.activity.BaseActivity;
+import com.andoiddevop.weatherapplication.view.fragment.BaseFragment;
 import com.andoiddevop.weatherapplication.view.fragment.Home.FragmentHome;
 import com.andoiddevop.weatherapplication.view.fragment.ManageLocation.FragmentManageLocation;
+import com.andoiddevop.weatherapplication.view.fragment.MapView.FragmentMapView;
 import com.andoiddevop.weatherapplication.view.fragment.Settings.FragmentSettings;
 import com.andoiddevop.weatherapplication.utils.Constants;
 import com.google.android.material.navigation.NavigationView;
@@ -26,7 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity  {
 
 
     @BindView(R.id.toolbar)
@@ -37,15 +41,11 @@ public class HomeActivity extends BaseActivity {
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-
+    ActionBarDrawerToggle toggle;
     private int navigationIndex = 0;
     private String[] drawerTitles;
     private String CURRENT_TAG = Constants.TAG_HOME;
-
     private Handler handler;
-    ActionBarDrawerToggle toggle;
-
-    boolean mToolBarNavigationListenerIsRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +61,11 @@ public class HomeActivity extends BaseActivity {
         settingUpNavigationView();
 
 
-
         if (savedInstanceState == null) {
             navigationIndex = 0;
             CURRENT_TAG = Constants.TAG_HOME;
             loadFragment();
         }
-
 
 
     }
@@ -82,10 +80,8 @@ public class HomeActivity extends BaseActivity {
      * Returns respected fragment that user
      * selected from navigation menu
      */
-
-
     private void loadFragment() {
-     // selecting appropriate nav menu item
+        // selecting appropriate nav menu item
         settingUpNavigationMenu();
 
         settingToolbarTitle();
@@ -134,6 +130,9 @@ public class HomeActivity extends BaseActivity {
                 return fragmentManageLocation;
 
             case 2:
+                FragmentMapView mapView = new FragmentMapView();
+                return mapView;
+            case 3:
                 FragmentSettings fragmentSettings = new FragmentSettings();
                 return fragmentSettings;
 
@@ -155,8 +154,13 @@ public class HomeActivity extends BaseActivity {
                     navigationIndex = 1;
                     CURRENT_TAG = Constants.TAG_MANAGE_LOCATION;
                     break;
-                case R.id.nav_Setting:
+                case R.id.nav_map_view:
                     navigationIndex = 2;
+                    CURRENT_TAG = Constants.TAG_MAP_VIEW;
+                    break;
+
+                case R.id.nav_Setting:
+                    navigationIndex = 3;
                     CURRENT_TAG = Constants.TAG_SETTINGS;
                     break;
                 default:
@@ -192,16 +196,26 @@ public class HomeActivity extends BaseActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+
     }
+
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (navigationIndex == 0)
-        {
-            getMenuInflater().inflate(R.menu.menu_items,menu);
+        if (navigationIndex == 0) {
+            getMenuInflater().inflate(R.menu.menu_items, menu);
         }
 
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        navigationIndex = 0;
+        CURRENT_TAG = Constants.TAG_HOME;
+        loadFragment();
+    }
+
+
 }

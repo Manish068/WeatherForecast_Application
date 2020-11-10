@@ -26,6 +26,7 @@ public class Constants {
     public static final String TIME_FORMAT = "time_format";
     public static final String TIME_FORMAT_12 = "12";
     public static final String TIME_FORMAT_24 = "24";
+    public static final String TAG_MAP_VIEW = "MAP_VIEW";
     public static String TAG_HOME="HOME";
     public static String TAG_MANAGE_LOCATION="MANAGE_LOCATIONS";
     public static String TAG_SETTINGS="SETTINGS";

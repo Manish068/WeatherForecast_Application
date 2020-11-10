@@ -12,6 +12,11 @@
             android:title="@string/manage_location"
             />
 
+        <item android:id="@+id/nav_map_view"
+            android:icon="@drawable/ic_map"
+            android:title="@string/MapView"
+            />
+
         <item android:id="@+id/nav_Setting"
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"

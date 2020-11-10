@@ -27,6 +27,10 @@ import com.andoiddevop.weatherapplication.view.fragment.weather.adapter.FiveDays
 import com.andoiddevop.weatherapplication.view.fragment.weather.presenter.WeatherFragmentPresenter;
 import com.andoiddevop.weatherapplication.view.fragment.weather.view.WeatherFragmentView;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdRequest.Builder;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +59,7 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
     private String latitude = "";
     private String longitude = "";
     private WeatherFragmentPresenter weatherFragmentPresenter;
+    private AdView bannerAdview;
 
     @Nullable
     @Override
@@ -66,6 +71,11 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
 
 
         init(view);
+
+        MobileAds.initialize(getActivity(),"ca-app-pub-2506362121328967~5159068585");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bannerAdview.loadAd(adRequest);
+
 
 
         weatherFragmentPresenter = new WeatherFragmentPresenter(this);
@@ -96,6 +106,7 @@ public class FragmentWeather extends BaseFragment implements WeatherFragmentView
         textViewWind = view.findViewById(R.id.textViewWind);
         textViewSunSet = view.findViewById(R.id.textViewSunSet);
         recyclerViewFiveDays = view.findViewById(R.id.recyclerViewFiveDays);
+        bannerAdview = view.findViewById(R.id.adView);
     }
 
     @Override
