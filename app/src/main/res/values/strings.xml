@@ -33,6 +33,8 @@
     <string name="mh">mh</string>
     <string name="millibar_type">milibar</string>
     <string name="MapView">Map view</string>
+    <string name="longitude">longitude:</string>
+    <string name="latitude">latitude:</string>
 
 
     <string-array name="navigation_titles_array">

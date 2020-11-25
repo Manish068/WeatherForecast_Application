@@ -109,7 +109,6 @@ public class FragmentManageLocation extends BaseFragment implements SavedPlacesR
         savedPlaces.setLongitude(String.valueOf(place.getLatLng().longitude));
         savedPlaces.setTitle(place.getName());
         savedPlaces.setSubTitle(place.getAddress());
-
         savedPlacesRepository.insertTask(savedPlaces);
 
     }

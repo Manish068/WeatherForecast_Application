@@ -12,6 +12,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
@@ -40,8 +41,28 @@ public class FrequentFunction {
 
     }
 
-    public static String getWeekDays(long unixtimestamp){
-        long timeStamp=unixtimestamp * 1000L;
+
+    public static String getAddress(Context context, double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        List<Address> addresses = null;
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(addresses == null){
+            return "";
+        }
+
+        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
+        return address;
+    }
+
+
+    public static String getWeekDays(long unixtimestamp) {
+        long timeStamp = unixtimestamp * 1000L;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE");
         Date date = new Date(timeStamp);
         Calendar calendar = Calendar.getInstance();
@@ -64,15 +85,12 @@ public class FrequentFunction {
         return dayOfTheWeek;
     }
 
-    public static String getCurrentDate(){
-        String formattedDate= "";
+    public static String getCurrentDate() {
+        String formattedDate = "";
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd hh:mm a");
         return formattedDate = dateFormat.format(c);
     }
-
-
-
 
 
     public static String get24HrsTimeStamp(long timeStamp) {
@@ -107,7 +125,7 @@ public class FrequentFunction {
             final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             final Date date = simpleDateFormat.parse(time);
             time = new SimpleDateFormat("hh:mm a").format(date);
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return time;
@@ -118,23 +136,22 @@ public class FrequentFunction {
             final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             final Date date = simpleDateFormat.parse(time);
             time = new SimpleDateFormat("HH:mm").format(date);
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return time;
     }
 
 
-
     public static String celsiusToFahrenheit(double celsius) {
         double fahrenheit;
         DecimalFormat formatter = new DecimalFormat("##.00");
-        fahrenheit=(9.0/5.0)*celsius + 32;
+        fahrenheit = (9.0 / 5.0) * celsius + 32;
         return formatter.format(fahrenheit);
     }
 
     public static double pascalToMillibar(double pascal) {
-        return (pascal/1000);
+        return (pascal / 1000);
     }
 
     public static void recyclerViewAnimation(Activity activity, final RecyclerView recyclerView) {
@@ -168,7 +185,6 @@ public class FrequentFunction {
         int height = dimension.heightPixels;
         return height;
     }
-
 
 
 }
